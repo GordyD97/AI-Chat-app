@@ -1,7 +1,11 @@
 import React from "react";
-import { useMultiChatLogic, MultiChatSocket, MultiChatWindow } from "react-chat-engine-advanced";
+import {
+  useMultiChatLogic,
+  MultiChatSocket,
+  MultiChatWindow,
+} from "react-chat-engine-advanced";
 import Header from "@/components/customHeader";
-
+import StandardMessageForm from "@/components/customMessageFroms/StandardMessageForm";
 
 const Chat = () => {
   const chatProps = useMultiChatLogic(
@@ -9,16 +13,23 @@ const Chat = () => {
     // The user is currently static will be dynamic later on in the build.
     "testuser",
     "1234"
+  );
 
-  )
-
-  return <div style={{ flexBasis: "100%"}}>
-    <MultiChatSocket {...chatProps} />
-    <MultiChatWindow {...chatProps}
-    style={{height: "100vh"}}
-    renderChatHeader={(chat) => <Header chat={chat} />}
-    />
-    </div>;
+  return (
+    <div style={{ flexBasis: "100%" }}>
+      <MultiChatSocket {...chatProps} />
+      <MultiChatWindow
+        {...chatProps}
+        style={{ height: "100vh" }}
+        renderChatHeader={(chat) => <Header chat={chat} />}
+        renderMessageForm={(props) => {
+          return ( 
+          <StandardMessageForm props={props} activeChat={ChatProps} />;
+           )
+        }}
+      />
+    </div>
+  );
 };
 
 export default Chat;
