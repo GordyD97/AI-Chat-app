@@ -27,7 +27,7 @@ const StandardMessageForm = () => {
           />
         </div>
       )}
-      {/* <div className="message-form">
+      <div className="message-form">
         <div className="message-form-input-container">
           <input
             className="message-form-input"
@@ -36,7 +36,7 @@ const StandardMessageForm = () => {
             placeholder="Send a Message..."
           />
         </div>
-      </div> */}
+      </div>
     </div>
   );
 };
