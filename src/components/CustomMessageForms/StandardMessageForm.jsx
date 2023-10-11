@@ -6,6 +6,8 @@ const StandardMessageForm = () => {
   const [attachment, setAttachment] = useState("");
   const [preview, setPreview] = useState("");
 
+  const handleChange = (e) => setMessage(e.target.value);
+
   return (
     <div className="message-from-container">
       {preview && (
@@ -16,16 +18,25 @@ const StandardMessageForm = () => {
             src={preview}
             onLoad={() => URL.revokeObjectURL(preview)}
           />
-            <XMarkIcon 
-             className="message-form-icon"
-             onClick={() => {
-                setPreview("");
-                setAttachment("");
-             }}
-            />
-
+          <XMarkIcon
+            className="message-form-icon"
+            onClick={() => {
+              setPreview("");
+              setAttachment("");
+            }}
+          />
         </div>
       )}
+      {/* <div className="message-form">
+        <div className="message-form-input-container">
+          <input
+            className="message-form-input"
+            value={message}
+            onChange={handleChange}
+            placeholder="Send a Message..."
+          />
+        </div>
+      </div> */}
     </div>
   );
 };
