@@ -4,6 +4,8 @@ import cors from "cors";
 import dotenv from "dotenv";
 import helmet from "helmet";
 import morgan from "morgan";
+import { Configuration, OpenAIApi } from "openai";
+import openAiRoutes from "./routes/openai.js";
 
 
 // configurations 
@@ -17,9 +19,13 @@ app.use(bodyParser.urlencoded({ limit: "30mb", extended: true }));
 app.use(cors);
 
 // open Ai configuration 
-const openai = new OpenAI({
-    apiKey: 'OPEN_API_KEY', // defaults to process.env["OPENAI_API_KEY"]
+const configuration = new Configuration({
+    apiKey: process.env.OPEN_API_KEY,
 });
+export const openai = new OpenAIApi(configuration);
+
+app.use("/openai", openAiRoutes);
+
 
 async function main() {
     const chatCompletion = await openai.chat.completions.create({
