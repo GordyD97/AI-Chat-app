@@ -82,7 +82,7 @@ const StandardMessageForm = ({ props, activeChat }) => {
             )}
           </Dropzone>
 
-          <hr className="vertival-line" />
+          <hr className="vertical-line" />
           <PaperAirplaneIcon
             className="message-form-icon-airplane"
             onClick={() => {
