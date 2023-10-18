@@ -51,7 +51,10 @@ const StandardMessageForm = ({ props, activeChat }) => {
           />
         </div>
       )}
-      <div className="message-form">
+      <div
+        className="message-form"
+        style={{ display: "flex", justifyContent: "center" }}
+      >
         <div className="message-form-input-container">
           <input
             className="message-form-input"
